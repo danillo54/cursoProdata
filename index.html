@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- tag para dar zoom em dispositivos moveis-->
+    <title>Aula 1</title>
+    <!-- css -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.css">
+
+    <!-- fim css -->
+
+    <!-- inicio js-->
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="app/config/pd-app.js"></script>
+    <script src="app/controller/index.controller.js"></script>
+   <!-- fim js -->
+
+</head>
+<body ng-app="pdApp">
+    <div ng-controller="IndexController">
+
+        <span>{{nome}}</span>
+
+        <button ng-click="ola()">Click Me</button>
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Nome</label>
+                    <input type="text" class="form-control"/>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Sobrenome</label>
+                    <input type="text" class="form-control"/>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Cidade</label>
+                    <input type="text" class="form-control"/>
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Estado</label>
+                    <input type="text" class="form-control"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

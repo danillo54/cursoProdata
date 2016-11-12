@@ -1,0 +1,12 @@
+angular.module('pdApp')
+    .controller('IndexController',IndexController)
+
+function IndexController($scope) {
+    $scope.nome= "Danillo";
+    //registrando no escopo
+    $scope.ola = ola;
+
+    function ola(){
+        alert('Ola');
+    }
+}
