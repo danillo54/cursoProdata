@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- tag para dar zoom em dispositivos moveis-->
-    <title>Index</title>
+    <title>Aula Rota</title>
     <!-- css -->
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.css">
@@ -28,19 +28,36 @@
 
     <script src="app/config/pd-app.js"></script>
     <script src="app/config/pd-rotas-config.js"></script>
-
+    <script src="app/controller/cadastro-carro.controller.js"></script>
     <script src="app/service/alert.service.js"></script>
     <script src="app/filter/maiusculo.filter.js"></script>
     <script src="app/controller/index-router.controler.js"></script>
-    <script src="app/views/bairro/cadastro-bairro.controller.js"></script>
+
+
+
     <!-- fim js -->
 
 </head>
 <body ng-app="pdApp" class="container"
-      ng-controller="CadastroBairroController">
+      ng-controller="IndexRouterController">
+<div class="row">
+    <div class="col-md-12">
+        <md-nav-bar>
+            <md-nav-item md-nav-click="abrirPagina('cadastroCarro')">
+                Cadastro de carro
+            </md-nav-item>
+            <md-nav-item md-nav-click="abrirPagina('pesquisaCarro')">
+                Pesquisa de carro
+            </md-nav-item>
+        </md-nav-bar>
+    </div>
+</div>
+<div>
+    <!--<a ui-sref="cadastroCarro">Cadastro de carro</a>-->
+    <!--<a ui-sref="pesquisaCarro">Pesquisa de carro</a>-->
+</div>
 
-    <a ui-sref="cadastroBairro">Cadastro de Bairro</a>
-<div ><!-- corpo-->
+<div><!-- corpo-->
     <ui-view></ui-view>
 </div>
 </body>

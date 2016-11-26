@@ -1,10 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<div class="panel-default" ng-app="pdApp" ng-controller="VisualizarBairroController">
+        <div class="panel-heading">
+            <h3 class="panel-title">Bairro</h3>
+        </div>
+        <div class="panel-body">
+
+            <button class="btn btn-primary" ng-click="abrirBairro()">Voltar</button>
+            <div class="panel-body">
+
+                <div class="row">
+                    <div class="col-md-1">
+                        Bairro: <h4 ng-bind="entidade.bairro"></h4>
+                        Cidade: <h4 ng-bind="entidade.cidade"></h4>
+                        Estado: <h4 ng-bind="entidade.estado"></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>

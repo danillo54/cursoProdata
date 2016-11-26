@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- tag para dar zoom em dispositivos moveis-->
-    <title>Index</title>
+    <title>Aula 1</title>
     <!-- css -->
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.css">
@@ -26,23 +26,26 @@
     <script src="node_modules/angular-material/angular-material.js"></script>
     <script src="node_modules/oclazyload/dist/ocLazyLoad.js"></script>
 
+
     <script src="app/config/pd-app.js"></script>
     <script src="app/config/pd-rotas-config.js"></script>
-
+    <script src="app/controller/index.controller.js"></script>
+    <script src="app/controller/index-watch.controller.js"></script>
     <script src="app/service/alert.service.js"></script>
     <script src="app/filter/maiusculo.filter.js"></script>
-    <script src="app/controller/index-router.controler.js"></script>
-    <script src="app/views/bairro/cadastro-bairro.controller.js"></script>
+
+
+
     <!-- fim js -->
 
 </head>
-<body ng-app="pdApp" class="container"
-      ng-controller="CadastroBairroController">
+<body ng-app="pdApp">
+<div class="panel panel-default" ng-controller="IndexController">
 
-    <a ui-sref="cadastroBairro">Cadastro de Bairro</a>
-<div ><!-- corpo-->
-    <ui-view></ui-view>
+    <div ng-controller="IndexWatchController">
+        <button class="btn btn-default"
+            ng-click="disparar()">Dispara function</button>
+    </div>
 </div>
 </body>
-</html>
 </html>

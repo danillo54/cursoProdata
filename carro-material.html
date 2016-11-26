@@ -10,14 +10,18 @@
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.css">
     <link rel="stylesheet" href="node_modules/angular-toastr/dist/angular-toastr.css">
     <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="node_modules/angular-ui-grid/ui-grid.css">
+    <link rel="stylesheet" href="node_modules/angular-material/angular-material.css">
     <!-- fim css -->
 
     <!-- inicio js-->
     <script src="node_modules/jquery/dist/jquery.js"></script>
     <script src="node_modules/angular/angular.js"></script>
-    <script src="node_modules/angular-messages/angular-messages.js"></script>
+    <script src="node_modules/angular-aria/angular-aria.js"></script>
+    <script src="node_modules/angular-material/angular-material.js"></script>
     <script src="node_modules/angular-animate/angular-animate.js"></script>
     <script src="node_modules/angular-toastr/dist/angular-toastr.tpls.min.js"></script>
+    <script src="node_modules/angular-ui-grid/ui-grid.js"></script>
 
     <script src="app/config/pd-app.js"></script>
     <script src="app/controller/cadastro-carro.controller.js"></script>
@@ -33,16 +37,17 @@
 
     <form name="myForm" novalidate >
 
-        <div class="panel-heading">Cadastro de Carros</div>
+        <div class="panel-heading">Cadastro de Carro - Material</div>
 
         <div class="panel panel-default">
             <div class="panel-body">
 
                 <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-12">
                         <div class="form-group" ng-class="{'has-error' : myForm.nome.$touched && myForm.nome.$invalid}">
+                            <md-input-container>
                             <label class="control-label">Carro</label>
-                            <input type="text" class="form-control"
+                            <input type="text"
                                    ng-model="entidade.carroNome"
                                    ng-required="true"
                                    ng-minlength="3"
@@ -50,34 +55,42 @@
                                    id="itNome"
                                    name="nome" autofocus="true"
                             />
+                                </md-input-container>
                             <div ng-messages="myForm.nome.$error" class="text-danger" ng-if="myForm.nome.$touched">
                                 <div ng-messages-include="app/template/input-ng-messages.html"></div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div class="form-group" ng-class="{'has-error' : myForm.cor.$touched && myForm.cor.$invalid}">
+                            <md-input-container>
                             <label class="control-label">Cor</label>
-                            <input type="text" class="form-control"
+                            <md-select
                                    ng-model="entidade.carroCor"
                                    name="cor"
+                                   required>
+                                <md-option value="verde">Verde</md-option>
+                                <md-option value="azul">Azul</md-option>
+                                <md-option value="vermelho">Vermelho</md-option>
+                                <md-option value="laranja">Laranja</md-option>
+                                <md-option value="preto">Preto</md-option>
 
-                                   required/>
-
+                            </md-select>
+                                <md-input-container>
                             <div ng-messages="myForm.cor.$error" class="text-danger" ng-if="myForm.nome.$touched">
                                 <div ng-message="required" >Campo obrigatorio</div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div class="form-group" ng-class="{'has-error' : myForm.data.$touched && myForm.cor.$invalid}">
                             <label class="control-label">Data de lancamento</label>
-                            <input type="date" class="form-control"
+                            <md-datepicker
                                    ng-model="entidade.dataLancamento"
                                    name="data"
-                                   required/>
+                                   required></md-datepicker>
 
                             <div ng-messages="myForm.data.$error" class="text-danger" ng-if="myForm.nome.$touched">
                                 <div ng-message="required" >Campo obrigatorio</div>
@@ -85,23 +98,9 @@
                         </div>
                     </div>
 
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div class="col-md-12">
-                            <table class="table">
-                                <tr>
-                                    <th>Nome do carro</th>
-                                    <th>Cor</th>
-                                    <th>Data</th>
-                                </tr>
-                                <tr ng-repeat="carro in listaCarros">
-                                    <td ng-bind="carro.carroNome"/>
-                                    <td ng-bind="carro.carroCor | maiusculo"/>
-                                    <td ng-bind="carro.dataLancamento | date: 'dd/MM/yyyy'" />
-                                   <td>
-                                        <button type="button"  class="btn btn-danger fa fa-trash-o" ng-click="excluir(carro)"/>
-                                    </td>
-                                </tr>
-                            </table>
+                            <div ui-grid="defaultGridOptions"></div>
                         </div>
                     </div>
 
@@ -110,16 +109,16 @@
             </div>
             <div class="panel-footer">
 
-                <button type="button" class="btn btn-primary " ng-click="salvar()">Salvar
+                <md-button type="button" class="md-raised md-primary" ng-click="salvar()">Salvar
                     <i class="fa fa-floppy-o"></i>
-                </button>
+                </md-button>
 
-                <button type="button" class="btn btn-warning " ng-click="limpar()">Limpar
+                <md-button type="button" class="md-raised" ng-click="limpar()">Limpar
                     <i class="fa fa-eraser"></i>
-                </button>
-                <button type="button" class="btn btn-danger " ng-click="limparLista()">Limpar lista
+                </md-button>
+                <md-button type="button" class="md-raised md-warn" ng-click="limparLista()">Limpar lista
                     <i class="fa fa-trash-o"></i>
-                </button>
+                </md-button>
             </div>
 
         </div>

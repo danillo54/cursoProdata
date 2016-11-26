@@ -1,0 +1,86 @@
+
+<div ng-app="pdApp" ng-controller="CadastroBairroController">
+
+<form name="myForm" novalidate>
+    <div class="panel panel-default" >
+
+        <div class="panel-heading">
+            <h3 class="panel-title">Cadastro de Bairros</h3>
+        </div>
+        <div class="panel-body">
+
+            <div class="row">
+
+                <div class="col-md-3">
+                    <div class="form-group" ng-class="{'has-error' : myForm.nome.$touched && myForm.nome.$invalid}">
+                        <label class="control-label">Bairro</label>
+                        <input type="text" class="form-control"
+                               ng-model="entidade.bairro"
+                               ng-required="true"
+                               ng-minlength="3"
+                               ng-maxlength="20"
+                               id="itNome"
+                               name="bairro" autofocus="true"
+                        />
+                        <div ng-messages="myForm.nome.$error" class="text-danger" ng-if="myForm.nome.$touched">
+                            <div ng-messages-include="app/template/input-ng-messages.html"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group" ng-class="{'has-error' : myForm.nome.$touched && myForm.nome.$invalid}">
+                        <label class="control-label">Cidade</label>
+                        <input type="text" class="form-control"
+                               ng-model="entidade.cidade"
+                               ng-required="true"
+                               ng-minlength="3"
+                               ng-maxlength="20"
+                               name="cidade" autofocus="true"
+                        />
+                        <div ng-messages="myForm.nome.$error" class="text-danger" ng-if="myForm.nome.$touched">
+                            <div ng-messages-include="app/template/input-ng-messages.html"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="form-group" ng-class="{'has-error' : myForm.nome.$touched && myForm.nome.$invalid}">
+                        <label class="control-label">Estado</label>
+                        <input type="text" class="form-control"
+                               ng-model="entidade.estado"
+                               ng-required="true"
+                               ng-minlength="3"
+                               ng-maxlength="20"
+                               name="estado" autofocus="true"
+                        />
+                        <div ng-messages="myForm.nome.$error" class="text-danger" ng-if="myForm.nome.$touched">
+                            <div ng-messages-include="app/template/input-ng-messages.html"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div ui-grid="defaultGridOptions"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-footer">
+
+            <button type="button" class="btn btn-primary " ng-click="salvar()">Salvar
+                <i class="fa fa-floppy-o"></i>
+            </button>
+
+            <button type="button" class="btn btn-warning" ng-click="limpar()">Limpar
+                <i class="fa fa-eraser"></i>
+            </button>
+
+        </div>
+    </div>
+
+</form>
+
+</div>

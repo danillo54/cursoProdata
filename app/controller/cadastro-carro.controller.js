@@ -1,15 +1,33 @@
 angular.module('pdApp')
     .controller('CadastroCarroController',CadastroCarroController)
 
+CadastroCarroController.$inject = ['$scope','AlertService'];
+
 function CadastroCarroController($scope,AlertService) {
     $scope.entidade = [];
     $scope.listaCarros=[];
-
+    $scope.texto = "Cadastro de Carro";
     //registrando no escopo
     $scope.salvar = salvar;
     $scope.limpar = limpar;
     $scope.limparLista = limparLista;
     $scope.excluir = excluir;
+    $scope.defaultGridOptions = {
+        columnDefs: [
+            {name: 'Nome do carro', field: 'carroNome', minWidth: 230},
+            {name: 'Cor do carro', field: 'carroCor', width: 130},
+            {
+                name: 'Data de lancamento', field: 'dataLancamento',
+                cellTemplate: 'app/template/grid/cell-template-date.html', width: 130
+            },
+            {
+                name: '', field: 'excluir',
+                cellTemplate: 'app/template/grid/cell-template-excluir.html', width: 40
+            }
+        ],
+        data: 'listaCarros',
+        enableColumnMenus: false
+    };
 
     function salvar(){
 

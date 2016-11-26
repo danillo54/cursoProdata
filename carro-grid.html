@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap-theme.css">
     <link rel="stylesheet" href="node_modules/angular-toastr/dist/angular-toastr.css">
     <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="node_modules/angular-ui-grid/ui-grid.css">
+    <link rel="stylesheet" href="node_modules/angular-material/angular-material.css">
     <!-- fim css -->
 
     <!-- inicio js-->
@@ -17,12 +19,18 @@
     <script src="node_modules/angular/angular.js"></script>
     <script src="node_modules/angular-messages/angular-messages.js"></script>
     <script src="node_modules/angular-animate/angular-animate.js"></script>
+    <script src="node_modules/angular-aria/angular-aria.js"></script>
+    <script src="node_modules/angular-material/angular-material.js"></script>
     <script src="node_modules/angular-toastr/dist/angular-toastr.tpls.min.js"></script>
+    <script src="node_modules/angular-ui-grid/ui-grid.js"></script>
+    <script src="node_modules/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="node_modules/oclazyload/dist/ocLazyLoad.js"></script>
 
     <script src="app/config/pd-app.js"></script>
     <script src="app/controller/cadastro-carro.controller.js"></script>
     <script src="app/service/alert.service.js"></script>
     <script src="app/filter/maiusculo.filter.js"></script>
+
 
 
     <!-- fim js -->
@@ -59,12 +67,17 @@
                     <div class="col-md-3">
                         <div class="form-group" ng-class="{'has-error' : myForm.cor.$touched && myForm.cor.$invalid}">
                             <label class="control-label">Cor</label>
-                            <input type="text" class="form-control"
+                            <select class="form-control"
                                    ng-model="entidade.carroCor"
                                    name="cor"
+                                   required>
+                                <option value="verde">Verde</option>
+                                <option value="azul">Azul</option>
+                                <option value="vermelho">Vermelho</option>
+                                <option value="laranja">Laranja</option>
+                                <option value="preto">Preto</option>
 
-                                   required/>
-
+                            </select>
                             <div ng-messages="myForm.cor.$error" class="text-danger" ng-if="myForm.nome.$touched">
                                 <div ng-message="required" >Campo obrigatorio</div>
                             </div>
@@ -87,21 +100,7 @@
 
                     <div class="col-md-3">
                         <div class="col-md-12">
-                            <table class="table">
-                                <tr>
-                                    <th>Nome do carro</th>
-                                    <th>Cor</th>
-                                    <th>Data</th>
-                                </tr>
-                                <tr ng-repeat="carro in listaCarros">
-                                    <td ng-bind="carro.carroNome"/>
-                                    <td ng-bind="carro.carroCor | maiusculo"/>
-                                    <td ng-bind="carro.dataLancamento | date: 'dd/MM/yyyy'" />
-                                   <td>
-                                        <button type="button"  class="btn btn-danger fa fa-trash-o" ng-click="excluir(carro)"/>
-                                    </td>
-                                </tr>
-                            </table>
+                            <div ui-grid="defaultGridOptions"></div>
                         </div>
                     </div>
 
